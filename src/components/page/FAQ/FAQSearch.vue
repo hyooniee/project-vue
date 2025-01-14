@@ -1,6 +1,6 @@
 <template>
   <div class="search-box">
-    제목<input v-model.lazy="searchKey.searchTitle" />
+    제목<input v-model="searchKey.searchTitle" v-on:keyup.enter="FAQInsert" />
     <input type="date" v-model="searchKey.searchStartDate" />
     <input type="date" v-model="searchKey.searchEndDate" />
     <button @click="FAQSearch">검색</button>

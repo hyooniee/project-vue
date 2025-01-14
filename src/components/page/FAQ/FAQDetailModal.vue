@@ -1,10 +1,12 @@
 <template>
   <div>
-    <ContextBox>FAQ 등록</ContextBox>
+    <ContextBox>{{
+      !detailValue.faq_idx ? "FAQ 등록" : "FAQ 상세보기"
+    }}</ContextBox>
   </div>
   <div class="board-detail">
     <div class="board-contents">
-      <table>
+      <table style="width: 100%; margin-top: 10%">
         <tr>
           <td>유형</td>
           <td>
@@ -13,6 +15,7 @@
               id="individual"
               value="1"
               v-model="detailValue.faq_type"
+              style="width: 20px"
             />
             개인회원
           </td>
@@ -22,6 +25,7 @@
               id="company"
               value="2"
               v-model="detailValue.faq_type"
+              style="width: 20px"
             />
             기업회원
           </td>
@@ -29,13 +33,21 @@
         <tr>
           <td>제목</td>
           <td>
-            <input type="text" v-model="detailValue.title" />
+            <input
+              type="text"
+              v-model="detailValue.title"
+              style="width: 100%"
+            />
           </td>
         </tr>
         <tr>
           <td>내용</td>
           <td>
-            <input type="text" v-model="detailValue.content" />
+            <textarea
+              style="width: 100%; border: 1px solid #ccc"
+              v-model="detailValue.content"
+              rows="5"
+            />
           </td>
         </tr>
       </table>
@@ -135,7 +147,7 @@ const handleDelete = () => {
 onActivated(() => {
   let pathSegments = window.location.pathname.split("/"); // URL을 '/'로 분리
   faq_idx.value = pathSegments[pathSegments.length - 1]; // 맨 끝 값 추출
-  if (faq_idx.value === "insert") {
+  if (faq_idx.value === "faqSavePart.do") {
     detailValue.value.title = "";
     detailValue.value.content = "";
   }
@@ -182,16 +194,16 @@ input[type="text"] {
 
 .button-box {
   text-align: right;
-  margin-top: 10px;
+  margin-top: 30px;
   display: flex;
-  justify-content: left;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
 }
 
 td {
   padding: 8px;
   border-bottom: 1px solid #ddd;
-  text-align: center;
+  text-align: left;
 }
 button {
   background-color: #3bb2ea;

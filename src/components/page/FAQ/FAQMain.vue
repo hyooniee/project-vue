@@ -55,7 +55,9 @@
                 </td>
               </tr>
               <tr :class="style === faq.faq_idx ? 'show' : 'hide'">
-                <td colspan="5">{{ faq.content }}</td>
+                <td colspan="5">
+                  <pre>{{ faq.content }}</pre>
+                </td>
               </tr>
             </template>
           </template>
