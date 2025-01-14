@@ -18,8 +18,7 @@
               style="width: 20px"
             />
             개인회원
-          </td>
-          <td>
+
             <input
               type="radio"
               id="company"
